@@ -24,6 +24,8 @@ void setup()
   pinMode(CLAP_PIN, INPUT);
   pinMode(B_PIN, OUTPUT);
 
+  Serial.begin(9600);
+
   motor.attach(3);
 }
 
@@ -42,22 +44,26 @@ void loop()
 
   if (doubleClap(clap, mill))
   {
+    Serial.println("a");
     switch (state)
     {
     case State::FIRST_STOP:
       motor.write(130);
       state = State::SECOND_STOP;
+      Serial.println("1");
       break;
 
     case State::SECOND_STOP:
       motor.write(130);
       state = State::THIRD_STOP;
+      Serial.println("2");
       break;
 
     case State::THIRD_STOP:
       motor.write(65);
       state = State::FIRST_STOP;
-      direction = false;
+      moving_up = false;
+      Serial.println("3");
       break;
     }
   }
@@ -67,6 +73,7 @@ void loop()
     {
       motor.write(90);
       press_time = mill;
+      Serial.println("b");
     }
     else
     {
