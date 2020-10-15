@@ -91,7 +91,7 @@ bool doubleClap(bool clapVal, unsigned long mill)
     hasSucceeded = false;
   }
 
-  if ((mill - firstClapTime <= betweenClaps) && !hasSucceeded)
+  if ((mill - firstClapTime <= betweenClaps) && (mill - firstClapTime >= 200) && !hasSucceeded)
   {
     if (clapVal && !lastClapVal)
     {
