@@ -13,14 +13,8 @@ enum class State
   THIRD_STOP
 };
 
-State state = State::FIRST_STOP;
-
-bool doubleClap(bool clapVal, unsigned long mill);
-
 void setup()
 {
-  // put your setup code here, to run once:
-
   pinMode(CLAP_PIN, INPUT);
   pinMode(B_PIN, OUTPUT);
 
@@ -83,7 +77,6 @@ void loop()
 
   last_b_val = b_val;
 }
-
 bool doubleClap(bool clapVal, unsigned long mill)
 {
   // return true if double taped
