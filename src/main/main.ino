@@ -36,7 +36,7 @@ void loop()
   bool clap = !digitalRead(CLAP_PIN); //false if detected clap
   bool b_val = digitalRead(B_PIN);    //true if pressed
   bool last_b_val;
-  bool direction = true;
+  bool moving_up = true;
   unsigned long press_time;
   unsigned long mill = millis();
 
@@ -69,7 +69,7 @@ void loop()
   }
   if (b_val && !last_b_val)
   {
-    if (direction && mill - press_time >= 100)
+    if (moving_up && mill - press_time >= 100)
     {
       motor.write(90);
       press_time = mill;
@@ -77,7 +77,7 @@ void loop()
     }
     else
     {
-      direction = true;
+      moving_up = true;
     }
   }
 
