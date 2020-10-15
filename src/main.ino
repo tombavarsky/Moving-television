@@ -45,17 +45,17 @@ void loop()
     switch (state)
     {
     case State::FIRST_STOP:
-      motor.write(155);
+      motor.write(130);
       state = State::SECOND_STOP;
       break;
 
     case State::SECOND_STOP:
-      motor.write(155);
+      motor.write(130);
       state = State::THIRD_STOP;
       break;
 
     case State::THIRD_STOP:
-      motor.write(30);
+      motor.write(65);
       state = State::FIRST_STOP;
       direction = false;
       break;
