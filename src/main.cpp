@@ -1,21 +1,6 @@
 #include <Arduino.h>
 #include <Servo.h>
 
-// 01234567
-
-// 01001011
-// 10110100
-// 11111111
-// 00000000
-
-// 01001011
-// 10110101
-//100000000
-// 00000000
-
-//          byte range: -128 - 127
-// unsigned byte range:    0 - 255
-
 const int CLAP_PIN = A7;
 const int B_PIN = 10;
 
