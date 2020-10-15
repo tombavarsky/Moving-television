@@ -1,8 +1,8 @@
 #include <Arduino.h>
 #include <Servo.h>
 
-const int CLAP_PIN = A7;
-const int B_PIN = 10;
+static const int CLAP_PIN = A7;
+static const int B_PIN = 10;
 
 Servo motor;
 
