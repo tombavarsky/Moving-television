@@ -4,13 +4,6 @@
 const int CLAP_PIN = A7;
 const int B_PIN = 10;
 
-bool clap;  //false if detected clap
-bool b_val; //true if pressed
-bool last_b_val;
-bool direction = true;
-unsigned long press_time;
-unsigned long mill;
-
 Servo motor;
 
 enum class State
@@ -36,8 +29,13 @@ void setup()
 
 void loop()
 {
-  mill = millis();
-  clap = !digitalRead(CLAP_PIN);
+  bool clap = !digitalRead(CLAP_PIN); //false if detected clap
+  bool b_val = digitalRead(B_PIN);    //true if pressed
+  bool last_b_val;
+  bool direction = true;
+  unsigned long press_time;
+  unsigned long mill = millis();
+
   b_val = digitalRead(B_PIN);
 
   if (doubleClap(clap, mill))
