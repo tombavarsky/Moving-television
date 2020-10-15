@@ -13,6 +13,33 @@ enum class State
   THIRD_STOP
 };
 
+bool doubleClap(bool clapVal, unsigned long mill)
+{
+  // return true if double taped
+  static bool lastClapVal;             // for rising and falling edge
+  static const int betweenClaps = 400; //the maximum time between the two claps that would count ad double tap
+  static long firstClapTime;           //captures the time of the first clap
+  static bool hasSucceeded;            //true if finished false if didn't
+
+  if (!clapVal && lastClapVal)
+  {
+    firstClapTime = mill;
+    hasSucceeded = false;
+  }
+
+  if ((mill - firstClapTime <= betweenClaps) && (mill - firstClapTime >= 200) && !hasSucceeded)
+  {
+    if (clapVal && !lastClapVal)
+    {
+      hasSucceeded = true;
+      return true;
+    }
+  }
+
+  lastClapVal = clapVal;
+  return false;
+}
+
 void setup()
 {
   pinMode(CLAP_PIN, INPUT);
@@ -76,30 +103,4 @@ void loop()
   }
 
   last_b_val = b_val;
-}
-bool doubleClap(bool clapVal, unsigned long mill)
-{
-  // return true if double taped
-  static bool lastClapVal;             // for rising and falling edge
-  static const int betweenClaps = 400; //the maximum time between the two claps that would count ad double tap
-  static long firstClapTime;           //captures the time of the first clap
-  static bool hasSucceeded;            //true if finished false if didn't
-
-  if (!clapVal && lastClapVal)
-  {
-    firstClapTime = mill;
-    hasSucceeded = false;
-  }
-
-  if ((mill - firstClapTime <= betweenClaps) && (mill - firstClapTime >= 200) && !hasSucceeded)
-  {
-    if (clapVal && !lastClapVal)
-    {
-      hasSucceeded = true;
-      return true;
-    }
-  }
-
-  lastClapVal = clapVal;
-  return false;
 }
