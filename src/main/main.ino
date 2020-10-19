@@ -83,7 +83,7 @@ void loop()
       break;
 
     case State::THIRD_STOP:
-      motor.write(65);
+      motor.write(62);
       state = State::FIRST_STOP;
       moving_up = false;
       Serial.println("3");
