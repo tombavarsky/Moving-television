@@ -52,7 +52,7 @@ void setup()
 
 void loop()
 {
-  State state = State::FIRST_STOP;
+  static State state = State::FIRST_STOP;
 
   bool clap = !digitalRead(CLAP_PIN); //false if detected clap
   bool b_val = digitalRead(B_PIN);    //true if pressed
