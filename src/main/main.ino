@@ -64,10 +64,9 @@ void loop()
 
   b_val = digitalRead(B_PIN);
 
-  if (doubleClap(clap, mill))
+  if (doubleClap(clap, mill) && !finished_moving)
   {
     Serial.println("a");
-    finished_moving = false;
     switch (state)
     {
     case State::FIRST_STOP:
@@ -103,6 +102,10 @@ void loop()
     {
       moving_up = true;
     }
+  } 
+  else if(!b_val)
+  {
+    finished_moving = false;
   }
 
   last_b_val = b_val;
