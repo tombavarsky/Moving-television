@@ -60,13 +60,14 @@ void loop()
   static bool moving_up = true;
   static unsigned long press_time;
   unsigned long mill = millis();
-  static bool finished_moving = false; //if the TV stoped true, if moving between stops false
+  static bool finished_moving = true; //if the TV stoped true, if moving between stops false
 
   b_val = digitalRead(B_PIN);
 
   if (doubleClap(clap, mill) && finished_moving)
   {
     Serial.println("a");
+    finished_moving = false;
     switch (state)
     {
     case State::FIRST_STOP:
@@ -102,11 +103,12 @@ void loop()
     {
       moving_up = true;
     }
-  } 
-  else if(!b_val)
-  {
-    finished_moving = false;
   }
+   
+  // if(!b_val)
+  // {
+  //   finished_moving = false;
+  // }
 
   last_b_val = b_val;
 }
