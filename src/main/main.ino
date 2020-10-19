@@ -64,7 +64,7 @@ void loop()
 
   b_val = digitalRead(B_PIN);
 
-  if (doubleClap(clap, mill) && !finished_moving)
+  if (doubleClap(clap, mill) && finished_moving)
   {
     Serial.println("a");
     switch (state)
