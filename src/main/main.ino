@@ -56,9 +56,9 @@ void loop()
 
   bool clap = !digitalRead(CLAP_PIN); //false if detected clap
   bool b_val = digitalRead(B_PIN);    //true if pressed
-  bool last_b_val;
-  bool moving_up = true;
-  unsigned long press_time;
+  static bool last_b_val;
+  static bool moving_up = true;
+  static unsigned long press_time;
   unsigned long mill = millis();
 
   b_val = digitalRead(B_PIN);
