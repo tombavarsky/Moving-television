@@ -104,7 +104,7 @@ void loop()
     else
     {
       moving_up = true;
-      motor.write(75);
+      motor.write(68);
     }
   }
 
