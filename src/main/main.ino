@@ -104,11 +104,6 @@ void loop()
       moving_up = true;
     }
   }
-   
-  // if(!b_val)
-  // {
-  //   finished_moving = false;
-  // }
 
   last_b_val = b_val;
 }
