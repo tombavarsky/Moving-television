@@ -92,12 +92,14 @@ void loop()
   }
   if (b_val && !last_b_val)
   {
-    if (moving_up && mill - press_time >= 100)
+    if (moving_up)
     {
+      if(mill - press_time >= 100){
       motor.write(90);
       press_time = mill;
       Serial.println("b");
       finished_moving = true;
+      }
     }
     else
     {
